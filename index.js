@@ -90,8 +90,8 @@ const dfMessenger = document.querySelector('df-messenger');
     
     dfMessenger.addEventListener('df-messenger-loaded' , function(event)
     {
-        console.log(dfMessenger.getAttribute("session-id")) ;
-        dfMessenger.setAttribute("session-id",window.localStorage)
+        console.log("jj",dfMessenger.getAttribute("session-id")) ;
+        dfMessenger.setAttribute("session-id",window.sessionStorage)
         //window.localStorage.clear();
     }
     )
