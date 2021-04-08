@@ -48,7 +48,7 @@
 </script>
 
 </head>
-<body>
+<body >
     <!-- --------------------------------------- BOT SETTINGS --------------------------------------------- -->
     <!--  you just need to add those attributes to apdate changes without putting any values 
         expand 
@@ -57,16 +57,15 @@
     
     
     <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-    
+    <!--c76eb80a-58de-41b2-b58b-748eec17d64a-->
     <df-messenger
+      id="messenger"
       intent="WELCOME"
       chat-title="conversellBot"
       chat-icon="https://image.flaticon.com/icons/png/512/1698/1698535.png"
       agent-id="c76eb80a-58de-41b2-b58b-748eec17d64a"
       language-code="en"
-       
-      
-      
+      user-id = "aa"
     >
     <style>
      .one {
@@ -79,12 +78,17 @@
           }
 
           df-messenger {
-            --df-messenger-bot-message: #878fac;
+            --df-messenger-bot-message: #212224;
             --df-messenger-button-titlebar-color: #df9b56;
             --df-messenger-chat-background-color: #fafafa;
             --df-messenger-font-color: white;
-            --df-messenger-send-icon: #878fac;
+            --df-messenger-send-icon: #ca2828;
             --df-messenger-user-message: #479b3d;
+            --df-messenger-input-box-color: #fafafa;
+            --df-messenger-input-font-color: black;
+            --df-messenger-input-placeholder-font-color: #212224;
+            
+
            }
 
       </style>       
@@ -98,7 +102,7 @@
 				<span class="contact100-form-title">
 					conversellBot
 				</span>
-
+               
 				<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
 					<span class="label-input100">CHAT BOT NAME *</span>
 					<input class="input100" type="text" name="name" placeholder="Enter the bot Name">
@@ -186,12 +190,11 @@
                 </div>
 
 				<div class="container-contact100-form-btn">
-					<button class="contact100-form-btn">
-						<span>
-							generate script 
-							<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
-						</span>
-					</button>
+                    <button id="btnTest" class="contact100-form-btn">
+                        <span>
+                            show message in chat
+                        </span>
+                    </button>
 				</div>
 			</form>
 		</div>

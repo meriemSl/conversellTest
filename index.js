@@ -1,39 +1,60 @@
-    const dfMessenger = document.querySelector('df-messenger');
+
+const dfMessenger = document.querySelector('df-messenger');
+    
+    
+
+
+
+
+
+
+
     dfMessenger.addEventListener('df-button-clicked', function (event) {
         
-        var elem,
-        style,textTest;
-        textTest = `df-messenger { 
-                                    --df-messenger-bot-message: #fff;
-                                    --df-messenger-button-titlebar-color: #0041C2;
-                                    --df-messenger-chat-background-color: #0041C2;
-                                    --df-messenger-font-color: #000;
-                                    --df-messenger-send-icon: #00adff;
-                                    --df-messenger-user-message: #0041C2;
-                                    --df-messenger-chip-border-color:#0041C2;
-                                } `;
-        
-        elem = document.querySelector('df-messenger');
-        console.log(event)
+       console.log(event);
+
+    //    const payload = [
+            
+    //            {
+    //              "type": "info",
+    //              "title": "Info item title",
+    //              "subtitle": "Info item subtitle",
+    //              "image": {
+    //                "src": {
+    //                  "rawUrl": "https://example.com/images/logo.png"
+    //                }
+    //              },
+    //              "actionLink": "https://example.com"
+    //            }];
     
-    
-    
-        
-            const payload = [
-                {
-                  "type": "info",
-                  "title": "Info item title",
-                  "subtitle": "Info item subtitle",
-                  "image": {
-                    "src": {
-                      "rawUrl": "https://example.com/images/logo.png"
-                    }
-                  },
-                  "actionLink": "https://example.com"
-                }];
-              dfMessenger.renderCustomCard(payload);
+    //          dfMessenger.renderCustomCard(payload);
         
         
+        //dfMessenger.showMinChat();
+
+        //var elem,
+        //style,textTest;
+        //textTest = `df-messenger { 
+        //                            --df-messenger-bot-message: #fff;
+        //                            --df-messenger-button-titlebar-color: #0041C2;
+        //                            --df-messenger-chat-background-color: #0041C2;
+        //                            --df-messenger-font-color: #000;
+        //                            --df-messenger-send-icon: #00adff;
+        //                            --df-messenger-user-message: #0041C2;
+        //                            --df-messenger-chip-border-color:#0041C2;
+        //                        } `;
+        
+        //elem = document.querySelector('df-messenger');
+        //console.log(event)
+        //var info = event
+        //var xhr = new XMLHttpRequest();
+        //xhr.open("POST", 'https://us-central1-conversell-pfe-21.cloudfunctions.net/app/kkk', true);
+        //xhr.setRequestHeader('Content-Type', 'application/json');
+        //xhr.send(JSON.stringify({
+        //    value: info
+        //}));
+            
+           
     //console.log(document.styleSheets)
     //    //console.log(elem)
     //    //console.log(textTest);
@@ -65,17 +86,25 @@
         
           
     
-    });
+});
     
-    dfMessenger.addEventListener('df-chip-clicked', function (event) {
-        console.log(event.detail.query)
-        //var result = (event.detail.query).localeCompare("text");
-       // console.log(result);
+    dfMessenger.addEventListener('df-messenger-loaded' , function(event)
+    {
+        console.log(dfMessenger.getAttribute("session-id")) ;
+        dfMessenger.setAttribute("session-id",window.localStorage)
+    }
+    )
+     dfMessenger.addEventListener('df-chip-clicked',  function (event) {
+        //console.log(event);
+       // dfMessenger.renderCustomText('costum text');
      switch(event.detail.query) {
-      
-        case 'show me text':    {
+        
+        case 'show me text':
+                
+        {
+            console.log(dfMessenger.getAttribute("session-id")); 
             let request = new XMLHttpRequest()
-            //http://localhost:3000/textEventConsume
+            //http://localhost:3000/stextEventConsume
             request.open("GET","https://us-central1-conversell-pfe-21.cloudfunctions.net/app/textEventConsume");
             request.send();
             request.onload = () => {
@@ -89,7 +118,7 @@
         }
         break; 
         
-        case 'show me card':{
+        case 'show me card' :{
             
             let request = new XMLHttpRequest()
             request.open("GET","https://us-central1-conversell-pfe-21.cloudfunctions.net/app/payloadeventConsume");
@@ -104,15 +133,14 @@
             }
         }
         break;
-    }
+      }
         
       });
     
     dfMessenger.addEventListener('df-list-element-clicked', function (event) {
-        console.log(event.detail.element.event.name );
+        console.log(event.detail);
         
-       if (event.detail.element.event.name == "item1")
-          {
+       
             const payload = [
                 {
                   "type": "info",
@@ -126,26 +154,25 @@
                   "actionLink": "https://example.com"
                 }];
               dfMessenger.renderCustomCard(payload);
-          }
-          else {
-            const payload = [
+        
+            //const payload = [
                 
-                        {
-                          "type": "description",
-                          "title": "Description title",
-                          "text": [
-                            "This is text line 1.",
-                            "This is text line 2."
-                          ]
-                        }
+            //            {
+            //              "type": "description",
+            //              "title": "Description title",
+            //              "text": [
+            //                "This is text line 1.",
+            //                "This is text line 2."
+            //              ]
+            //            }
                       
                     
                   
                   
-              ];
-              dfMessenger.renderCustomCard(payload);
+            //  ];
+            //  dfMessenger.renderCustomCard(payload);
     
-          }
+          
     
     
     //    let request = new XMLHttpRequest()
@@ -170,8 +197,12 @@
     }
     });
     
-    
-      
+    const buttonElement = document.getElementById('btnTest');
+    buttonElement.addEventListener('click', function (event) {
+        
+        dfMessenger.renderCustomText('Custom text');
+
+      }); 
     
     
      
