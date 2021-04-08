@@ -91,7 +91,7 @@ const dfMessenger = document.querySelector('df-messenger');
     dfMessenger.addEventListener('df-messenger-loaded' , function(event)
     {
         console.log(dfMessenger.getAttribute("session-id")) ;
-        dfMessenger.setAttribute("session-id",window.localStorage)
+        dfMessenger.setAttribute("session-id",window.sessionStorage)
     }
     )
      dfMessenger.addEventListener('df-chip-clicked',  function (event) {
